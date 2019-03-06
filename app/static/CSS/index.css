@@ -1,0 +1,56 @@
+/* body{
+    background-image: url("https://www.si3.ae/wp-content/uploads/2018/08/Web-design-development-dubai.jpg");
+} */
+
+a{
+    color: rgb(102, 102, 160);
+    font-size: 20px;
+}
+a:hover{
+    color: darkblue;
+}
+
+.card-body{
+    text-align: center;
+    background-color: rgb(143, 151, 158);
+    margin-left: 200px;
+    margin-right: 200px;
+    /* opacity: 0.8; */
+    font-size: 30px;
+    color: white;
+   
+}
+
+.write{
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.navbar{
+
+
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+h1,h2{
+   font-family: monospace;
+   font-size: 26px;
+}
+
+hr.new1 {
+    border-top: 1px solid rgb(133, 128, 128);
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+
+.comment{
+    text-align: center;
+   
+}
+
+.card{
+ border-radius: 20px;
+}
+
+

@@ -1,0 +1,72 @@
+
+{% extends 'base.html' %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{url_for('static',filename='CSS/index.css')}}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<a href="/subscribe" style="float:right;">subscribe</a>
+<div class="container-fluid container">
+  <h1>Welcome to the blogging web app, click here to write a blog &nbsp;<a class="btn btn-primary btn md" href="/new_blog" > New Blog</a></h1>
+ 
+</div>
+<div class="container">
+<blockquote class="text-center text-lg">
+    <h2>Random Quotes</h2>
+    <p style="font-family:monospace;">{{quote.quote}}</p>
+    <p style="font-family: monospace;"><b>Author:</b> {{quote.author}}</p>
+    
+  </div>
+  <hr class="new1">
+  
+  <h3 style="text-align:center; font-family:monospace;">Read posted blogs here!</h3>
+{% for blog in blogs %}
+
+<div class="container-fluid">
+  <div class="card-deck">
+  <div class="card">
+    <div class="card-header" style='text-align:center;'>
+    </div>
+    <div class="card-body">
+      <p>Blog: {{blog.blog}}</p>
+
+      <div class="row">
+    <a href="/new_comment/{{blog.id}}" class="btn btn-primary a-btn-slide-text">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            <span><strong>Add comment</strong></span>            
+        </a>
+        <a href="/blog/edit/{{blog.id}}" class="btn btn-primary a-btn-slide-text">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+            <span><strong>Edit a blog</strong></span>            
+        </a>
+        <a href="/comment/{{blog.id}}" class="btn btn-primary a-btn-slide-text">
+            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+            <span><strong>View comments</strong></span>            
+        </a>
+        <a href="/blog/{{blog.id}}" class="btn btn-primary a-btn-slide-text">
+           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <span><strong>Delete comment</strong></span>            
+        </a>
+      </div>
+    
+     
+  </div>
+    <!-- <br> -->
+    <div class="card-footer">
+      <div class="container-fluid write">
+        
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+</div>
+
+{% endfor %}
+{% endblock %}
