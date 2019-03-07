@@ -5,20 +5,20 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return Advertisor.query.get(int(user_id))
 
 
-class Users(db.Model):
+class User(db.Model):
 
-    __tablename__ = 'clients'
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     email = db.Column(db.String(255))
-    phone = db.Column(db.Integer(10))
+    phone = db.Column(db.Integer())
     role_id = db.Column(db.Integer, db.ForeignKey("roles.id"))
-    rel_comment= db.relationship('Comment', backref='client', lazy='dynamic')
-    rel_subscribe= db.relationship('Subscribe', backref='client', lazy='dynamic')
+    rel_comment= db.relationship('Comment', backref='user', lazy='dynamic')
+    rel_subscribe= db.relationship('Subscribe', backref='user', lazy='dynamic')
 
     def save_comment(self):
         db.session.add(self)
@@ -35,7 +35,7 @@ class Advertisor(UserMixin,db.Model):
     __tablename__ = 'advertisors'
 
     id = db.Column(db.Integer,primary_key = True)
-    name = db.Column(db.String(255))
+    username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     phone_number = db.Column(db.Integer)
     pic_path = db.Column(db.String())
@@ -61,8 +61,8 @@ class Advertisor(UserMixin,db.Model):
     def __repr__(self):
         return f' {self.username}'
 
-
-class Role(UserMixin, db.Model):
+#UserMixin,
+class Role(db.Model):
    __tablename__="roles"
 
    id = db.Column(db.Integer, primary_key=True)
@@ -174,7 +174,7 @@ class Subscribe(db.Model):
 
 
    def __repr__(self):
-       return f'Users {self.email}'
+       return f'User {self.email}'
 
 
 

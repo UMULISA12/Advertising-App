@@ -1,3 +1,4 @@
-Hello dear subscriber
-Welcome to Watchlist
-We have just seen you have signed up for our application and want to welcome you to the family. Please enjoy the reviews of all your  favourite films.
+Hello dear advertisor {{user.username}}!
+Welcome to the Advertising App
+We have just seen you have signed up for our application and want to welcome you to the family.
+Please enjoy the easiest way of Advertising your products and keeping them update, staying in one place.
