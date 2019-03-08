@@ -1,13 +1,15 @@
-/* body{
-    background-image: url("https://www.si3.ae/wp-content/uploads/2018/08/Web-design-development-dubai.jpg");
-} */
+body{
+background-image: url();
+    
+}
+
 
 a{
-    color: rgb(102, 102, 160);
+    color: darkblue;
     font-size: 20px;
 }
 a:hover{
-    color: darkblue;
+    color: rgb(28, 40, 58);
 }
 
 .card-body{
@@ -33,9 +35,10 @@ a:hover{
     width: 100%; /* Full width */
 }
 
-h1,h2{
-   font-family: monospace;
+.h1,h2{
+   font-family: cursive;
    font-size: 26px;
+   color: blanchedalmond;
 }
 
 hr.new1 {
@@ -52,5 +55,22 @@ hr.new1 {
 .card{
  border-radius: 20px;
 }
+
+.header1{
+    font-size: 25px;
+}
+
+#video_background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1000;
+  }
+
+  .cont{
+    background-image:url("https://png.pngtree.com/thumb_back/fw800/20170805/pngtree-Design-Wallpaper-Shape-Graphic-background-photo-870344.jpg");
+  }
 
 

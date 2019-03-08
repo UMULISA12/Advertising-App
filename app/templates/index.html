@@ -1,8 +1,25 @@
 
-{% extends 'base.html' %}
+<div class="row">
+<img src="https://www.cooper-advertising.com/wp-content/themes/cooper/img/logo.png"  width="200px" height="150px" style="margin-left:30px;">&nbsp;
+<img src="https://assets.logitech.com/assets/64512/3/c925e-webcam.png" width="150px" width="100px">
+<img src="http://backgroundcheckall.com/wp-content/uploads/2017/12/laptop-transparent-background-10.png" width="150px" height="100px">
+<img src="https://webiconspng.com/wp-content/uploads/2017/09/Computer-Desktop-Pc-PNG-Image-46766-300x300.png" width="150px" width="100px">
+<img src="https://purepng.com/public/uploads/large/purepng.com-android-smartphonepersonal-computersmartphonemobile-operating-systemcellular-phoneandroidlenovo-1701528391137uji75.png" width="100px" height="70px">
 
+<img src="https://i2.wp.com/freepngimages.com/wp-content/uploads/2014/04/robertsr404_1.png?fit=400%2C400" width="150px" width="100px">
+<img src="http://www.pngnames.com/files/4/Television-Png-Background.png" width="150px" height="100px">&nbsp;&nbsp;
+<img src="https://www.necdisplay.com/images/products480x480/projector/hero/NP-M300W_SLANTUPPER.png" width="150px" height="100px">
+
+</div>
+
+
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% import 'macros.html' as macro %}
 {% block styles %}
   {{ super() }}
+
+  <div class="body" style="background-image:url(https://png.pngtree.com/thumb_back/fw800/20170805/pngtree-Design-Wallpaper-Shape-Graphic-background-photo-870344.jpg)">
   <link rel="stylesheet" href="{{url_for('static',filename='CSS/index.css')}}">
 
 {% endblock %}
@@ -11,62 +28,23 @@
 
 {% block content %}
 
-<a href="/subscribe" style="float:right;">subscribe</a>
-<div class="container-fluid container">
-  <h1>Welcome to the blogging web app, click here to write a blog &nbsp;<a class="btn btn-primary btn md" href="/new_blog" > New Blog</a></h1>
+<div class="container-fluid container" style="text-align:center;">
+  <h1 class="h1">Welcome to the Advertising web app,</h1> <br>
+  <h2 style="text-align:center;">Click here if you want to add an advertisement&nbsp;<a class="btn btn-primary btn md" href="/new-ads" >Advertise here</a></h2>
  
+<br><br><br><br>
 </div>
-<div class="container">
-<blockquote class="text-center text-lg">
-    <h2>Random Quotes</h2>
-    <p style="font-family:monospace;">{{quote.quote}}</p>
-    <p style="font-family: monospace;"><b>Author:</b> {{quote.author}}</p>
-    
-  </div>
-  <hr class="new1">
+</div>
+
+  <div class="container" style="text-align:center;">
+  <h2 style="color:rgb(28, 40, 58); font-size: 40px;"><b>Adverts categories</b></h2>
+  <p><a href='/new-brand'>Brand new</p></a>
+  <p><a href="/second-hand">Second hand</p></a>
   
-  <h3 style="text-align:center; font-family:monospace;">Read posted blogs here!</h3>
-{% for blog in blogs %}
-
-<div class="container-fluid">
-  <div class="card-deck">
-  <div class="card">
-    <div class="card-header" style='text-align:center;'>
-    </div>
-    <div class="card-body">
-      <p>Blog: {{blog.blog}}</p>
-
-      <div class="row">
-    <a href="/new_comment/{{blog.id}}" class="btn btn-primary a-btn-slide-text">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            <span><strong>Add comment</strong></span>            
-        </a>
-        <a href="/blog/edit/{{blog.id}}" class="btn btn-primary a-btn-slide-text">
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-            <span><strong>Edit a blog</strong></span>            
-        </a>
-        <a href="/comment/{{blog.id}}" class="btn btn-primary a-btn-slide-text">
-            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-            <span><strong>View comments</strong></span>            
-        </a>
-        <a href="/blog/{{blog.id}}" class="btn btn-primary a-btn-slide-text">
-           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            <span><strong>Delete comment</strong></span>            
-        </a>
-      </div>
-    
-     
-  </div>
-    <!-- <br> -->
-    <div class="card-footer">
-      <div class="container-fluid write">
-        
-      </div>
-    </div>
-  </div>
-  <br>
-</div>
 </div>
 
-{% endfor %}
+  
+
+
+
 {% endblock %}

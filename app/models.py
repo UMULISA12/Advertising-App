@@ -5,17 +5,17 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return Advertisor.query.get(int(user_id))
 
 
-class Users(db.Model):
+class User(db.Model):
 
-    __tablename__ = 'clients'
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String)
     email = db.Column(db.String(255))
-    phone = db.Column(db.Integer(10))
+    phone = db.Column(db.Integer)
     role_id = db.Column(db.Integer, db.ForeignKey("roles.id"))
     rel_comment= db.relationship('Comment', backref='client', lazy='dynamic')
     rel_subscribe= db.relationship('Subscribe', backref='client', lazy='dynamic')
@@ -35,7 +35,7 @@ class Advertisor(UserMixin,db.Model):
     __tablename__ = 'advertisors'
 
     id = db.Column(db.Integer,primary_key = True)
-    name = db.Column(db.String(255))
+    username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique = True,index = True)
     phone_number = db.Column(db.Integer)
     pic_path = db.Column(db.String())
@@ -45,6 +45,17 @@ class Advertisor(UserMixin,db.Model):
     rel_advert= db.relationship('Advert', backref='advertisors', lazy='dynamic')
     rel_post= db.relationship('Post', backref='advertisors', lazy='dynamic')
   
+
+
+
+    def save_advertisor(self):
+        db.session.add(self)
+        db.session.commit()
+
+    # @classmethod
+    # def get_advertisor(cls, user_id):
+    #     advertisor = Advertisors.query.filter_by(id=user_id).all()
+    #     return advertisor
 
     @property
     def password(self):
@@ -62,7 +73,7 @@ class Advertisor(UserMixin,db.Model):
         return f' {self.username}'
 
 
-class Role(UserMixin, db.Model):
+class Role(db.Model):
    __tablename__="roles"
 
    id = db.Column(db.Integer, primary_key=True)
@@ -70,26 +81,15 @@ class Role(UserMixin, db.Model):
    rel_users = db.relationship('User', backref = 'role1', lazy = 'dynamic')
    rel_advertisor = db.relationship('Advertisor', backref = 'role2', lazy = 'dynamic')
 
-
-#    def save_subscriber(self):
-#        db.session.add(self)
-#        db.session.commit()
-
-#    @classmethod
-#    def get_subscribers(cls,id):
-#        return Subscriber.query.all()
-
-
-#    def __repr__(self):
-#        return f'User {self.email}'
-
-
 class Advert(db.Model):
 
     __tablename__ = 'adverts'
 
     id = db.Column(db.Integer,primary_key = True)
     advert_name = db.Column(db.String)
+    location = db.Column(db.String)
+    description = db.Column(db.String)
+    photo = db.Column(db.String)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
     advertisor_id = db.Column(db.Integer, db.ForeignKey("advertisors.id"))
     rel_comment= db.relationship('Comment', backref='adverts', lazy='dynamic')
@@ -98,9 +98,13 @@ class Advert(db.Model):
 
     # advertisor_id = db.relationship('Advertisor', backref='advert', lazy='dynamic')
 
-    # def save_advert(self):
-    #     db.session.add(self)
-    #     db.session.commit()
+    def save_advert(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def fetch_advert():
+        adverts= Advert.query.all()
+        return adverts    
 
     # @classmethod
     # def get_adverts(cls, user_id):
@@ -161,8 +165,7 @@ class Subscribe(db.Model):
    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
    category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
    advert_id = db.Column(db.Integer, db.ForeignKey("adverts.id"))
-#    advert_id = db.relationship('Advert', backref='comment', lazy='dynamic')
-   
+
 
    def save_subscribe(self):
        db.session.add(self)
@@ -174,7 +177,7 @@ class Subscribe(db.Model):
 
 
    def __repr__(self):
-       return f'Users {self.email}'
+       return f'User {self.email}'
 
 
 

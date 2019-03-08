@@ -1,0 +1,59 @@
+<div class="row">
+    <img src="https://www.cooper-advertising.com/wp-content/themes/cooper/img/logo.png"  width="200px" height="150px" style="margin-left:30px;">&nbsp;
+    <img src="https://assets.logitech.com/assets/64512/3/c925e-webcam.png" width="150px" width="100px">
+    <img src="http://backgroundcheckall.com/wp-content/uploads/2017/12/laptop-transparent-background-10.png" width="150px" height="100px">
+    <img src="https://webiconspng.com/wp-content/uploads/2017/09/Computer-Desktop-Pc-PNG-Image-46766-300x300.png" width="150px" width="100px">
+    <img src="https://purepng.com/public/uploads/large/purepng.com-android-smartphonepersonal-computersmartphonemobile-operating-systemcellular-phoneandroidlenovo-1701528391137uji75.png" width="100px" height="70px">
+    
+    <img src="https://i2.wp.com/freepngimages.com/wp-content/uploads/2014/04/robertsr404_1.png?fit=400%2C400" width="150px" width="100px">
+    <img src="http://www.pngnames.com/files/4/Television-Png-Background.png" width="150px" height="100px">&nbsp;&nbsp;
+    <img src="https://www.necdisplay.com/images/products480x480/projector/hero/NP-M300W_SLANTUPPER.png" width="150px" height="100px">
+    
+    </div>
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% import 'macros.html' as macro %}
+{% block styles %}
+  {{ super() }}
+
+  <div class="body" style="background-image:url(https://png.pngtree.com/thumb_back/fw800/20170805/pngtree-Design-Wallpaper-Shape-Graphic-background-photo-870344.jpg)">
+  <link rel="stylesheet" href="{{url_for('static',filename='CSS/index.css')}}">
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="container-fluid container" style="text-align:center;">
+  <h1 class="h1">Welcome to the Advertising web app,</h1> <br>
+  <h2 style="text-align:center;">Click here if you want to add an advertisement&nbsp;<a class="btn btn-primary btn md" href="/new-ads" >Advertise here</a></h2>
+ 
+<br><br><br><br>
+</div>
+</div>
+
+
+  <h2 style="color:rgb(28, 40, 58); font-size:50px; text-decoration: underline; text-align:center;"><b>Brand new materials</b></h2>
+  {% for advert in adverts%}
+  <div class="container" style="text-align:center;">
+      <div class="jumbotron">
+
+                  <!-- <h4 class="card-title"><strong><a href="/oneadvert/{{advert.id}}"> {{advert.title }}</a></strong></h4> -->
+                  
+                  <p class="card-text"><b>Advertisor name:</b>{{advert.advertsisor_name}}</p>
+                  <p class="card-text"><b>Product name:</b>{{advert.advert_name}}</p>
+                  <p class="card-text"><b>Photo:</b>{{advert.photo}}</p>
+                  <p class="card-text"><b>Details:</b>{{advert.description}}</p>
+                  <p class="card-text"><b>Product location:</b>{{advert.location}}</p>
+                  <p class="card-text"><b>Time posted:</b>{{advert.time}}</p>
+                  <p class="card-text"><b>Advertisor phone:</b>{{advert.phone}}</p>
+
+          </div>
+      </div>
+     
+      {% endfor %}
+
+
+
+{% endblock %}
